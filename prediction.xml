@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<body copyright="All data copyright San Francisco Muni 2013.">
+<predictions agencyTitle="San Francisco Muni" routeTitle="43-Masonic" routeTag="43" stopTitle="Judson Ave &amp; Gennessee St" stopTag="5171">
+  <direction title="Outbound to the Crocker-Amazon District">
+  <prediction epochTime="1385332240730" seconds="655" minutes="10" isDeparture="false" dirTag="43_OB2" vehicle="8317" block="4302" tripTag="5829816" />
+  <prediction epochTime="1385333017984" seconds="1432" minutes="23" isDeparture="false" dirTag="43_OB2" vehicle="8217" block="4304" tripTag="5829817" />
+  <prediction epochTime="1385333813626" seconds="2228" minutes="37" isDeparture="false" dirTag="43_OB2" vehicle="8014" block="4306" tripTag="5829818" />
+  <prediction epochTime="1385334717523" seconds="3131" minutes="52" isDeparture="false" affectedByLayover="true" dirTag="43_OB2" vehicle="8120" block="4309" tripTag="5829819" />
+  <prediction epochTime="1385335617523" seconds="4031" minutes="67" isDeparture="false" affectedByLayover="true" dirTag="43_OB2" vehicle="8348" block="4308" tripTag="5829820" />
+  </direction>
+</predictions>
+</body>
