@@ -1,6 +1,6 @@
 (ns stops.core-test
   (:require [clojure.test :refer :all]
-            [stops.core :refer :all]))
+            [stoppaje.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

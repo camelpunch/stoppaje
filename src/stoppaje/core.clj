@@ -1,4 +1,4 @@
-(ns stops.core
+(ns stoppaje.core
   (:import java.io.ByteArrayInputStream)
   (:require [clojure.xml :as xml]
             [clojure.string :refer [join]]
