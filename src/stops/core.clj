@@ -8,21 +8,30 @@
   (->> string .trim .getBytes ByteArrayInputStream. xml/parse))
 
 ; (defn route-xml [] (slurp "http://webservices.nextbus.com/service/publicXMLFeed?command=routeConfig&a=sf-muni&r=43"))
-(defn prediction-xml [stop-tag] (slurp (str "http://webservices.nextbus.com/service/publicXMLFeed?command=predictions&a=sf-muni&r=43&s=" stop-tag)))
+(defn prediction-xml [& args]
+  (let [options (apply hash-map args)
+        stop-tag (:stop-tag options)]
+    (slurp (str "http://webservices.nextbus.com/service/publicXMLFeed?"
+                "command=predictions&"
+                "a=sf-muni&"
+                "r=43&"
+                "s=" stop-tag))))
 ; (defn prediction-xml [] (slurp "prediction.xml"))
 (defn route-xml [] (slurp "43.xml"))
 
 (defn body [xml] (-> xml parse-str :content first))
 
-(defn predictions [xml]
+(defn parse-predictions [xml]
   (let [raw-predictions (map :attrs (:content (first (:content (body xml)))))]
     (map (fn [prediction]
            {:arrival-datetime (to-time-zone (from-long (read-string (prediction :epochTime))) (default-time-zone))
             :arrival-minutes (prediction :minutes)}
            ) raw-predictions)))
-(predictions (prediction-xml "5171"))
+(parse-predictions (prediction-xml :stop-tag "5171"))
+
 (defn pretty-prediction [stop-tag]
-  (let [all-predictions (predictions (prediction-xml "5171"))]
+  (let [all-predictions (parse-predictions
+                          (prediction-xml :stop-tag stop-tag))]
     (str "Arriving in " (:arrival-minutes (first all-predictions)) " minutes")))
 (pretty-prediction "5171")
 
